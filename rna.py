@@ -11,12 +11,8 @@ Given: A DNA string t having length at most 1000 nt.
 Return: The transcribed RNA string of t.
 """
 
-import sys
+from utils import dna
 
-dna = raw_input()
+strand = raw_input()
 
-for nt in dna:
-    if nt == 'T':
-        sys.stdout.write('U')
-    else:
-        sys.stdout.write(nt)
+print dna.transcribe(strand)

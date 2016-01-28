@@ -30,11 +30,11 @@ max_gc_pct = 0
 max_gc_id = ''
 samples = fasta.read_samples(sys.stdin)
 
-for sample_id, dna in samples.iteritems():
-    cts = Counter(dna)
-    gc_pct = 100 * ((cts['G'] + cts['C']) / float(len(dna)))
+for sample in samples:
+    cts = Counter(sample['sequence'])
+    gc_pct = 100 * ((cts['G'] + cts['C']) / float(len(sample['sequence'])))
     if gc_pct > max_gc_pct:
         max_gc_pct = gc_pct
-        max_gc_id = sample_id
+        max_gc_id = sample['id']
 
 print '%s\n%f' % (max_gc_id, max_gc_pct)
